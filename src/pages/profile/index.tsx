@@ -38,6 +38,7 @@ const Profile = () => {
   const signOut = async () => {
     const shouldConfirm = await ConfirmDialog("", "TO SIGN OUT");
     if (shouldConfirm) {
+      setisPage(false);
       removeAsyncStorageData("login-user");
       router.push("/login");
     }
