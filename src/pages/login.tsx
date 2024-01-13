@@ -16,8 +16,6 @@ import {
 import { Session } from "./utils/Session";
 import Spinner from "./components/Spinner";
 
-
-
 const Login = () => {
   var now = new Date(); // create a new Date object
   var year = now.getFullYear(); // get the full year (four digits)
@@ -38,24 +36,32 @@ const Login = () => {
   }, []);
 
   const btnLogin = () => {
-
-    showLoadingSweetAlert();
-    getLogin().then((data) => {
-      console.log(data);
-      if (data != null) {
-        if (data.loginCodes == "success") {
-          setAsyncStorageData("login-user", JSON.stringify(data));
-          setTimeout(() => {
-            showSweetAlert("success", "success");
-            router.push("/home");
-          }, 800); // Simulated 3-second loading time
+    var user = "demo";
+    var pass = "123";
+    const username = document.getElementById("username") as HTMLInputElement;
+    const password = document.getElementById("password") as HTMLInputElement;
+    var fixUsername = username.value.toLocaleLowerCase();
+    if (fixUsername == user && password.value == pass) {
+      showLoadingSweetAlert();
+      getLogin().then((data) => {
+        console.log(data);
+        if (data != null) {
+          if (data.loginCodes == "success") {
+            setAsyncStorageData("login-user", JSON.stringify(data));
+            setTimeout(() => {
+              showSweetAlert("success", "success");
+              router.push("/home");
+            }, 800); // Simulated 3-second loading time
+          } else {
+            showSweetAlert(data.details, "error");
+          }
         } else {
-          showSweetAlert(data.details, "error");
+          showSweetAlert("Something went wrong", "error");
         }
-      } else {
-        showSweetAlert("Something went wrong", "error");
-      }
-    });
+      });
+    } else {
+      showSweetAlert("Username or Password is incorrect", "error");
+    }
   };
 
   const [isPass, setisPass] = useState("password");
@@ -102,14 +108,14 @@ const Login = () => {
                     Password
                   </label>
                   <div className="flex flex-row items-center ">
-                  <input
-                    id="password"
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    type="password"
-                    placeholder="Password"
-                  />
-                  {/*  */}
-                  <span
+                    <input
+                      id="password"
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      type="password"
+                      placeholder="Password"
+                    />
+                    {/*  */}
+                    <span
                       onClick={showHidePassword}
                       className="cursor-pointer bg-gray-500 hover:bg-blue-700 text-white font-bold py-1.5 px-2 rounded ml-2"
                     >
