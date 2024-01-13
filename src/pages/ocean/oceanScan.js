@@ -100,23 +100,11 @@ const oceanScan = () => {
           }
         >
           <div className="flex flex-col min-h-[60vh] items-center justify-center w-full">
-            <span className="text-md font-bold">RESULT</span>
-            <span className="text-md font-semibold mt-2">
-              <label
-                for="message"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Your result
-              </label>
-              <textarea
-                id="message"
-                rows="4"
-                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Write your thoughts here..."
-              >
-                {data}
-              </textarea>
-            </span>
+            <span className="text-md font-bold mb-8">Scan Result</span>
+            <textarea
+              class="peer h-full min-h-[100px] w-full resize-none rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50"
+              value={data}
+            />
           </div>
         </div>
 
