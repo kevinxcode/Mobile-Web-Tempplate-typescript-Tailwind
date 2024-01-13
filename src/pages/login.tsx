@@ -6,7 +6,7 @@ import {
   removeAsyncStorageData,
 } from "./utils/AsyncStorage";
 
-import { getLogin } from "./lib/_jsquerlab";
+import { getLogin } from "./api/querlab";
 
 import {
   showSweetAlert,
@@ -16,23 +16,7 @@ import {
 import { Session } from "./utils/Session";
 import Spinner from "./components/Spinner";
 
-const btnLogin = async () => {
-  const response = await window.fetch('https://hrd.citratubindo.com/sys-hr/auth/tes_auth', {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json;charset=UTF-8',
-    },
-    body: JSON.stringify({
-      query: 'aaaa',
-      variables: 'bbb',
-    }),
-  })
-    .then((response) => response.json())
-    .then((responseJson) => {
-      console.log(responseJson);
 
-    })
-}
 
 const Login = () => {
   var now = new Date(); // create a new Date object
@@ -53,19 +37,17 @@ const Login = () => {
     };
   }, []);
 
-  const btnLogin2 = () => {
-    const username = document.getElementById("username") as HTMLInputElement;
-    const password = document.getElementById("password") as HTMLInputElement;
+  const btnLogin = () => {
 
     showLoadingSweetAlert();
-    getLogin({ username, password }).then((data) => {
+    getLogin().then((data) => {
       console.log(data);
       if (data != null) {
         if (data.loginCodes == "success") {
-          // setAsyncStorageData("login-user", JSON.stringify(data));
+          setAsyncStorageData("login-user", JSON.stringify(data));
           setTimeout(() => {
             showSweetAlert("success", "success");
-            // router.push("/home");
+            router.push("/home");
           }, 800); // Simulated 3-second loading time
         } else {
           showSweetAlert(data.details, "error");

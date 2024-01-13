@@ -2,7 +2,7 @@
 import React from "react";
 
 const TopBar = ({ data }) => {
-  const [isConnected, setIsConnected] = React.useState(false);
+  const [isConnected, setIsConnected] = React.useState(true);
   return (
     <div className="flex flex-col fixed bg-gray-100  top-0 left-1/2 transform -translate-x-1/2 w-full h-12 items-center justify-center ">
       {/* connection */}

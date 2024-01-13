@@ -100,11 +100,11 @@ const oceanScan = () => {
           }
         >
           <div className="flex flex-col min-h-[60vh] items-center justify-center w-full">
-            <span className="text-md font-bold">KEVIN ALNIZAR</span>
+            <span className="text-md font-bold">RESULT</span>
             <span className="text-md font-semibold mt-2">
-              08 Jan 2024 08:00
+             {data}
             </span>
-            <span className="text-md font-semibold">P-12345</span>
+           
           </div>
         </div>
 
