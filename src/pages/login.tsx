@@ -85,7 +85,7 @@ const Login = () => {
             <div className="w-full bg-white">
               <div className="text-center mb-4">
                 <h1 className="text-3xl font-semibold mb-0 ">
-                  OCEAN
+                  ACTIVITY APP
                   <span className="leading-tight text-xs"> 2.0</span>
                 </h1>
                 <span className="leading-tight text-xs">Vallourec SEA</span>
@@ -169,9 +169,7 @@ const Login = () => {
                   </button>
                 </div>
                 <div className="flex items-center mt-5 justify-center ">
-                  <span className="leading-tight text-xs">
-                    © {year} SEA - HR
-                  </span>
+                  <span className="leading-tight text-xs">© {year}</span>
                 </div>
               </form>
             </div>

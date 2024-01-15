@@ -38,9 +38,13 @@ const oceanScan = () => {
   }, []);
 
   const handleScan = (data) => {
-    if (data) {
-      setisScanned(true);
-      setData(data);
+    try {
+      if (data) {
+        setisScanned(true);
+        setData(data);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
